@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   resources :movies do
     resources :reviews, only: [:new, :create]
+    collection do
+      get :search, :action => 'search', :as => 'search'
+    end
   end
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  get '/search', to: 'movies#search'
   root to: 'movies#index'
  
 
