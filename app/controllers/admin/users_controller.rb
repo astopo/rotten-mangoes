@@ -3,7 +3,8 @@ class Admin::UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      @users = User.all
+      all = User.all
+      @users = all.page(params[:page]).per(1)
     else
       redirect_to movies_path, notice: "Admin access only!"
     end
