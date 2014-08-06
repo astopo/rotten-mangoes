@@ -1,0 +1,7 @@
+<h1>Rotten Mangoes Users</h1>
+
+<%= link_to "Home", root_path %>
+
+<% @users.each do |user| %>
+  <p><%= user.full_name %></p>
+<% end %>

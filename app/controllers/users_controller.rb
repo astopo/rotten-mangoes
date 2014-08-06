@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  # def index
+  #   if current_user.admin?
+  #     @users = User.all
+  #   else
+  #     redirect_to movies_path, notice: "Admin access only!"
+  #   end
+  # end
+  
   def new
     @user = User.new
   end
