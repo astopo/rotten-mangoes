@@ -29,6 +29,11 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Allow for uploading movie posters
+gem 'carrierwave'
+
+gem 'pry-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
