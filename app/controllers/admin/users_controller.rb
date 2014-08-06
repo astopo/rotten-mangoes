@@ -10,6 +10,30 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to admin_users_path, notice: "#{@user.firstname} created"
+    else
+      render :new
+    end
+  end
+
+  def edit
+
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path, notice: "#{@user.firstname} deleted"
+  end
+
   protected
 
   def admin_only
@@ -17,5 +41,9 @@ class Admin::UsersController < ApplicationController
       flash[:alert] = "You must be an admin to access that page."
       redirect_to movies_path
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
   end
 end
