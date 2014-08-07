@@ -4,5 +4,6 @@ class UserMailer < ActionMailer::Base
   def delete_email(user)
     @user = user
     @url = 'http://localhost:3000'
+    mail(to: @user.email)
   end
 end

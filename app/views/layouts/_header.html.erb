@@ -1,0 +1,17 @@
+<% flash.each do |key,value| %>
+  <%= content_tag(:div, value) %>
+<% end %>
+
+<p>Search...</p>
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:title, "Title:") %>
+  <%= text_field(:movie, :title) %>
+  <%= label_tag(:director, "Director:") %>
+  <%= text_field(:movie, :director) %>
+  <%= label_tag(:duration, "Duration:") %>
+  <%= select(:movie, :duration, options_for_select([['Under 90 minutes','< 90'],['Between 90 and 120 minutes','90to120'],['Over 120 minutes', '> 120']])) %>
+  <%= submit_tag("search") %>
+<% end %>
+
+<h1>Rotten Mangoes</h1>
+<p><%= link_to "Home", root_path %></p>
