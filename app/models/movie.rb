@@ -26,7 +26,7 @@ class Movie < ActiveRecord::Base
   scope :director?, ->(director) { where("director LIKE ?", "%#{director}%") }
   scope :title?, ->(title) { where("title LIKE ?", "%#{title}%") }
   scope :runtime?, ->(time) { 
-    if time == "<90"
+    if time == "< 90"
       runtime = where("runtime_in_minutes < ?", 90)
     elsif time == "90to120"
       runtime = where("runtime_in_minutes >= ?", 90).where("runtime_in_minutes <= ?", 120)

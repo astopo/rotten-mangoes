@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get :search, :action => 'search', :as => 'search'
     end
   end
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resource :session, only: [:new, :create, :destroy]
 
   namespace :admin do
