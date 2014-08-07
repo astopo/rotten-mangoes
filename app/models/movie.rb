@@ -23,6 +23,19 @@ class Movie < ActiveRecord::Base
 
   mount_uploader :poster, PosterUploader
 
+  scope :director?, ->(director) { where("director LIKE ?", "%#{director}%") }
+  scope :title?, ->(title) { where("title LIKE ?", "%#{title}%") }
+  scope :runtime?, ->(time) { 
+    if time == "<90"
+      runtime = where("runtime_in_minutes < ?", 90)
+    elsif time == "90to120"
+      runtime = where("runtime_in_minutes >= ?", 90).where("runtime_in_minutes <= ?", 120)
+    else time == ">120"
+      runtime = where("runtime_in_minutes > ?", 120)
+    end
+    runtime
+  }
+
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size if reviews.size > 0
   end
