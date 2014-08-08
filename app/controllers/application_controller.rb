@@ -36,12 +36,10 @@ class ApplicationController < ActionController::Base
     if params[:preview_as] && is_actually_admin
       session[:user_id] = params[:preview_as]
       current_user
-    else
+    elsif params[:preview_as] == "none"
       session[:user_id] = session[:actual_user]
       current_user
     end
-    @movies = Movie.all
-    render :index
   end
 
   helper_method :current_user, :admin_only, :is_actually_admin, :check_preview_as

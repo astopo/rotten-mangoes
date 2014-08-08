@@ -4,7 +4,7 @@
 
 <% if current_user.admin? || session[:preview]  %>
   <div class="admin-bar">
-    (<%= link_to "admin", admin_users_path %>) (<a href="/?preview_as=11">view as....</a>)
+    (<%= link_to "admin", admin_users_path %>) (<a href="/?preview_as=11">view as....</a>) (<a href="/?preview_as=none">view as admin</a>)
   </div>
 <% end %>
 
