@@ -53,13 +53,6 @@ class Admin::UsersController < ApplicationController
 
   protected
 
-  def admin_only
-    if !current_user.admin?
-      flash[:alert] = "You must be an admin to access that page."
-      redirect_to movies_path
-    end
-  end
-
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
   end

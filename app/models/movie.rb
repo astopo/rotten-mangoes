@@ -29,8 +29,9 @@ class Movie < ActiveRecord::Base
     if time == "< 90"
       runtime = where("runtime_in_minutes < ?", 90)
     elsif time == "90to120"
-      runtime = where("runtime_in_minutes >= ?", 90).where("runtime_in_minutes <= ?", 120)
-    else time == ">120"
+      runtime = where("runtime_in_minutes >= ?", 90)
+      runtime = runtime.where("runtime_in_minutes <= ?", 120)
+    elsif time == "> 120"
       runtime = where("runtime_in_minutes > ?", 120)
     end
     runtime

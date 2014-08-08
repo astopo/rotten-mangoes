@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      session[:actual_user] = user.id
       redirect_to movies_path, notice: "Welcome back, #{user.firstname}"
     else
       flash.now[:alert] = "Log in failed..."

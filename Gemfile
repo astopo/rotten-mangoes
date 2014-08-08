@@ -37,7 +37,7 @@ gem 'pry-rails'
 gem 'kaminari'
 
 group :development do
-  gem "binding_of_caller"
+  gem 'binding_of_caller'
   gem 'better_errors'
 end
 

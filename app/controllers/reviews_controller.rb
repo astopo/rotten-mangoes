@@ -20,10 +20,10 @@ class ReviewsController < ApplicationController
   protected
 
   def load_movie
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:movie_id])
   end
 
   def review_params
-    params.require(:reviews).permit(:text, :rating_out_of_ten)
+    params.require(:review).permit(:text, :rating_out_of_ten)
   end
 end
